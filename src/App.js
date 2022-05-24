@@ -3,8 +3,10 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Items from './pages/Items';
+import axios from 'axios';
 import './App.css';
 
+let BASE_URL = 'http://localhost:3000'
 function App() {
 
   const handleUpdate = (id) => {
