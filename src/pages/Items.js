@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { BASE_URL } from '../globals'
+// import { BASE_URL } from '../globals'
 
 const Items = (props) => {
-    let [items, setItems] = useState([])
-    const getItems = async () => {
-        let retrievedItems = await axios.get(`${BASE_URL}/items`)
-        return retrievedItems
-    }
-    useEffect(async () => {
-        let items = await getItems()
-        console.log(items)
-        setItems(items.data)
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        const getItems = async () => {
+            const items = await axios.get(`http://localhost:3001/api/item`)
+            setItems(items.data)
+            console.log(items.data)
+        }
+        getItems()
+            .catch(console.error)
     }, [])
+
+    // const getItems = async () => {
+    //     let retrievedItems = await axios.get(`${BASE_URL}/items`)
+    //     return retrievedItems
+    // }
+    // useEffect(async () => {
+    //     let items = await getItems()
+    //     console.log(items)
+    //     setItems(items.data)
+    // }, [])
 
     return (
         <div className='items'>
