@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Items from './pages/Items';
+import ItemForm from './pages/ItemForm';
 import ItemDetails from './pages/ItemDetails';
 import axios from 'axios';
 import './App.css';
@@ -43,7 +44,8 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/items' element={<Items handleUpdate={handleUpdate} />} />
+          <Route path='/items' element={<Items handleUpdate={handleUpdate} />} /><Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
+          <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
           <Route path='/items/:id' element={<ItemDetails setNewItem={setNewItem} />} />
         </Routes>
       </main>
