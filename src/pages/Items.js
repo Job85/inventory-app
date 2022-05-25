@@ -16,16 +16,6 @@ const Items = (props) => {
             .catch(console.error)
     }, [])
 
-    // const getItems = async () => {
-    //     let retrievedItems = await axios.get(`${BASE_URL}/items`)
-    //     return retrievedItems
-    // }
-    // useEffect(async () => {
-    //     let items = await getItems()
-    //     console.log(items)
-    //     setItems(items.data)
-    // }, [])
-
     return (
         <div className='items'>
             <h1>Items List</h1>
@@ -34,9 +24,10 @@ const Items = (props) => {
                     <li className='item-card' key={i}>
                         <span className='item-card-span'>Location:{item.location}</span>
                         <span className='item-card-span'> Category:{item.category}</span>
-                        <span className='item-card-span'> Item:{item.item}</span>
-                        <span className='item-card-span'>Size:{item.size}</span>
-                        <span className='count-span'>Count:{item.count}</span>
+                        <span className='item-card-span'> Item:{item.item_name}</span>
+                        <span className='item-card-span'>Description:{item.description}</span>
+                        <span className='count-span'>Unit of Measure:{item.unit_measure}</span>
+                        <span className='count-span'>Case Size:{item.case_size}</span>
                         <Link to={`/items/${item._id}`}>
                             <button >
                                 Update
