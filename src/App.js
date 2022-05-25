@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Items from './pages/Items';
 import ItemForm from './pages/ItemForm';
-import ItemDetails from './pages/ItemDetails';
+import EditForm from './pages/EditItem';
 import axios from 'axios';
 import './App.css';
 
@@ -46,7 +46,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/items' element={<Items handleUpdate={handleUpdate} />} /><Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
           <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
-          <Route path='/items/:id' element={<ItemDetails setNewItem={setNewItem} />} />
+          <Route path='/items/:id' element={<EditForm setNewItem={setNewItem} />} />
         </Routes>
       </main>
     </div>

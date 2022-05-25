@@ -3,20 +3,20 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 
-const ItemDetails = (props) => {
-    let navigate = useNavigate()
-
+const EditForm = (props) => {
     let [retrievedItem, updateItem] = useState([])
+
+    let navigate = useNavigate()
     let { id } = useParams()
     let getItem = async () => {
-        let pendingItem = await axios.get(`http://localhost:3001/items/${id}`)
+        let pendingItem = await axios.get(`http://localhost:3001/item/${id}`)
         return pendingItem
     }
-    useEffect(async () => {
-        let item = await getItem()
-        console.log(item)
-        updateItem(item.data[0])
-    }, [])
+    // useEffect(async () => {
+    //     let item = await getItem()
+    //     console.log(item)
+    //     updateItem(item.data[0])
+    // }, [])
 
     const handleChange = (e) => {
         updateItem({ ...retrievedItem, [e.target.name]: e.target.value })
@@ -102,4 +102,4 @@ const ItemDetails = (props) => {
     )
 }
 
-export default ItemDetails
+export default EditForm
