@@ -46,7 +46,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/items' element={<Items handleUpdate={handleUpdate} />} /><Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
           <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
-          <Route path='/items/:id' element={<EditForm setNewItem={setNewItem} />} />
+          <Route path='/items/:id' element={<EditForm />} />
         </Routes>
       </main>
     </div>
