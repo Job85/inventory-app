@@ -75,84 +75,86 @@ const EditForm = () => {
             <h1>Edit { }</h1>
             <div className='editContainer'>
                 <div className='edit-card'>
-                    <li className='item-card'>
-                        <span>
-                            <label>Location:</label>
-                            <input
-                                value={formValues.location}
-                                type='text'
-                                onChange={handleChange}
-                                name={'location'}
-                                placeholder={`${formValues.location}`}
-                                className='edit-form' />
-                        </span>
-                    </li>
-                    <li className='item-card'>
-                        <span>
-                            <label>Category:</label>
-                            <input
-                                value={formValues.category}
-                                type='text'
-                                onChange={handleChange}
-                                name={'category'}
-                                placeholder={`${formValues.category}`}
-                                className='edit-form' />
-                        </span>
-                    </li>
-                    <li className='item-card'>
-                        <span>
-                            <label>Item:</label>
-                            <input
-                                value={formValues.item_name}
-                                type='text'
-                                onChange={handleChange}
-                                name={'item'}
-                                placeholder={`${formValues.item_name}`}
-                                className='edit-form' />
-                        </span>
-                    </li>
-                    <li className='item-card'>
-                        <span>
-                            <label>Description:</label>
-                            <input
-                                value={formValues.description}
-                                type='text'
-                                onChange={handleChange}
-                                name={'description'}
-                                placeholder={`${formValues.description}`}
-                                className='edit-form' />
-                        </span>
-                    </li>
-                    <li className='item-card'>
-                        <span>
-                            <label>Unit Measure:</label>
-                            <input
-                                value={formValues.unit_measure}
-                                type='text'
-                                onChange={handleChange}
-                                name={'unit-measure'}
-                                placeholder={`${formValues.unit_measure}`}
-                                className='edit-form' />
-                        </span>
-                    </li>
-                    <li className='item-card'>
-                        <span>
-                            <label>Case Size:</label>
-                            <input
-                                value={formValues.case_size}
-                                type='text'
-                                onChange={handleChange}
-                                name={'case-size'}
-                                placeholder={`${formValues.case_size}`}
-                                className='edit-form' />
-                        </span>
-                    </li>
-                    <div onClick={() => handleDelete(formValues._id)}>
-                        <button id='deleteButton' type='submit'>Delete</button>
-                    </div>
-                    <div onClick={() => handleSave(formValues)}>
-                        <button id='saveButton' type='submit'>Save</button>
-                    </div>
+                    <form onSubmit={handleSave}>
+                        <li className='item-card'>
+                            <span>
+                                <label>Location:</label>
+                                <input
+                                    value={formValues.location}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'location'}
+                                    placeholder={`${formValues.location}`}
+                                    className='edit-form' />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Category:</label>
+                                <input
+                                    value={formValues.category}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'category'}
+                                    placeholder={`${formValues.category}`}
+                                    className='edit-form' />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Item:</label>
+                                <input
+                                    value={formValues.item_name}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'item'}
+                                    placeholder={`${formValues.item_name}`}
+                                    className='edit-form' />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Description:</label>
+                                <input
+                                    value={formValues.description}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'description'}
+                                    placeholder={`${formValues.description}`}
+                                    className='edit-form' />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Unit Measure:</label>
+                                <input
+                                    value={formValues.unit_measure}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'unit-measure'}
+                                    placeholder={`${formValues.unit_measure}`}
+                                    className='edit-form' />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Case Size:</label>
+                                <input
+                                    value={formValues.case_size}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'case-size'}
+                                    placeholder={`${formValues.case_size}`}
+                                    className='edit-form' />
+                            </span>
+                        </li>
+                        <div onClick={() => handleDelete(formValues._id)}>
+                            <button id='deleteButton' type='submit'>Delete</button>
+                        </div>
+                        <div onClick={() => handleSave(formValues)}>
+                            <button id='saveButton' type='submit'>Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div >
