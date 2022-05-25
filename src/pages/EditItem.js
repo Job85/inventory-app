@@ -20,9 +20,8 @@ const EditForm = () => {
     useEffect(() => {
         let isCancelled = false
         const getItem = async () => {
-            const res = await axios.get(
-                `http://localhost:3001/api/item/${id}`
-            )
+            let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/${id}`
+            const res = await axios.get(url)
             if (!isCancelled) {
                 setFormValues(res.data)
                 console.log(setFormValues)
@@ -41,12 +40,13 @@ const EditForm = () => {
     }
 
     const handleDelete = async (_id) => {
-        await axios.delete(`http://localhost:3001/api/item/delete/${id}`).then(
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/delete/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/delete/${id}`
+        await axios.delete(url).then(
             () => navigate('/items'))
     }
 
     const updateItem = async () => {
-        let url = process.env.NODE_ENV === `http://localhost:3001/api/item/update/${id}`
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/update${id}`
         await axios.put({
             url,
             method: 'put',
@@ -65,7 +65,8 @@ const EditForm = () => {
             unit_measure: '',
             case_size: ''
         })
-        axios.put(`http://localhost:3001/api/item/update/${id}`, formValues)
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/update${id}`
+        axios.put(url, formValues)
         // navigate('/items');
     }
 
