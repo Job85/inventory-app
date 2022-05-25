@@ -31,7 +31,7 @@ const EditForm = () => {
         return () => {
             isCancelled = true
         }
-    }, [])
+    }, [id])
 
     const handleChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -83,7 +83,9 @@ const EditForm = () => {
                                     onChange={handleChange}
                                     name={'location'}
                                     placeholder={formValues.location}
-                                    className='edit-form' />
+                                    className='edit-form'
+                                    required
+                                />
                             </span>
                         </li>
                         <li className='item-card'>
@@ -95,7 +97,9 @@ const EditForm = () => {
                                     onChange={handleChange}
                                     name={'category'}
                                     placeholder={formValues.category}
-                                    className='edit-form' />
+                                    className='edit-form'
+                                    required
+                                />
                             </span>
                         </li>
                         <li className='item-card'>
@@ -107,7 +111,9 @@ const EditForm = () => {
                                     onChange={handleChange}
                                     name={'item_name'}
                                     placeholder={formValues.item_name}
-                                    className='edit-form' />
+                                    className='edit-form'
+                                    required
+                                />
                             </span>
                         </li>
                         <li className='item-card'>
@@ -119,7 +125,9 @@ const EditForm = () => {
                                     onChange={handleChange}
                                     name={'description'}
                                     placeholder={formValues.description}
-                                    className='edit-form' />
+                                    className='edit-form'
+                                    required
+                                />
                             </span>
                         </li>
                         <li className='item-card'>
@@ -131,7 +139,9 @@ const EditForm = () => {
                                     onChange={handleChange}
                                     name={'unit_measure'}
                                     placeholder={formValues.unit_measure}
-                                    className='edit-form' />
+                                    className='edit-form'
+                                    required
+                                />
                             </span>
                         </li>
                         <li className='item-card'>
@@ -143,7 +153,9 @@ const EditForm = () => {
                                     onChange={handleChange}
                                     name={'case_size'}
                                     placeholder={formValues.case_size}
-                                    className='edit-form' />
+                                    className='edit-form'
+                                    required
+                                />
                             </span>
                         </li>
                         <button>Save</button>
