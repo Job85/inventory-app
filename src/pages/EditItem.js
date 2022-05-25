@@ -4,6 +4,8 @@ import axios from 'axios'
 
 
 const EditForm = () => {
+    let navigate = useNavigate()
+    let { id } = useParams()
 
     const [formValues, setFormValues] = useState({
         location: '',
@@ -14,8 +16,6 @@ const EditForm = () => {
         case_size: ''
     })
 
-    let navigate = useNavigate()
-    let { id } = useParams()
 
     useEffect(() => {
         let isCancelled = false
@@ -50,10 +50,11 @@ const EditForm = () => {
             method: 'put',
             data: formValues
         })
+
     }
-    const handleSave = async (e) => {
-        console.log('button clicked')
+    const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(formValues)
         updateItem();
         setFormValues({
             location: '',
@@ -63,9 +64,9 @@ const EditForm = () => {
             unit_measure: '',
             case_size: ''
         })
-        axios.put(`http://localhost:3001/api/item/update/${id}`, formValues).then(
-            () => navigate('/items')
-        )
+        axios.put(`http://localhost:3001/api/item/update/${id}`, formValues)
+        console.log(updateItem)
+        // navigate('/items');
     }
 
     return (
@@ -73,7 +74,7 @@ const EditForm = () => {
             <h1>Edit { }</h1>
             <div className='editContainer'>
                 <div className='edit-card'>
-                    <form onSubmit={handleSave}>
+                    <form onSubmit={handleSubmit}>
                         <li className='item-card'>
                             <span>
                                 <label>Location:</label>

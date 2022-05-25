@@ -26,15 +26,10 @@ const putItemById = async (req, res) => {
     let updateItem = await Item.findOneAndReplace(
         { _id: req.params.id },
         {
-            ...req.body.location,
-            ...req.body.category,
-            ...req.body.item_name,
-            ...req.body.description,
-            ...req.body.unit_measure,
-            ...req.body.case_size
+            ...req.body
         }
     )
-    console.log('Updated Item!')
+    console.log(updateItem)
     res.send(updateItem)
 }
 
