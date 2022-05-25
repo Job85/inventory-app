@@ -8,7 +8,7 @@ import EditForm from './pages/EditItem';
 import axios from 'axios';
 import './App.css';
 
-let BASE_URL = process.env.NODE_ENV === 'local' ? 'http://localhost:3001' : `https://restaurant-inventory-app.herokuapp.com`
+// let BASE_URL = process.env.NODE_ENV === 'local' ? 'http://localhost:3001' : `https://restaurant-inventory-app.herokuapp.com`
 function App() {
 
   let navigate = useNavigate()
@@ -30,12 +30,15 @@ function App() {
   // event handler passed as prop to submit new items in ItemForm.jsx
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${BASE_URL}/api/item/create`, newItem).then(
-      () => navigate('/items'))
+    axios.post(`/api/item/create`, newItem)
+      // axios.post(`${BASE_URL}/api/item/create`, newItem)
+      .then(
+        () => navigate('/items'))
   }
 
   const handleUpdate = (id) => {
-    let editItem = axios.get(`${BASE_URL}/api/item/${id}`)
+    let editItem = axios.get(`/api/item/${id}`)
+    // let editItem = axios.get(`${BASE_URL}/api/item/${id}`)
     return editItem
   }
 
