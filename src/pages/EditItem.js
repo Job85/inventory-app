@@ -21,7 +21,7 @@ const EditForm = () => {
         let isCancelled = false
         const getItem = async () => {
             const res = await axios.get(
-                `http://localhost:3001/item/${id}`
+                `http://localhost:3001/api/item/${id}`
             )
             if (!isCancelled) {
                 setFormValues(res.data)
@@ -31,18 +31,16 @@ const EditForm = () => {
         return () => {
             isCancelled = true
         }
-    }, [id])
+    }, [])
 
     const handleChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value })
     }
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (_id) => {
         console.log('button clicked')
         await axios.delete(`http://localhost:3001/api/item/delete/${id}`).then(
-            () => navigate('/items')
-        )
-
+            () => navigate('/items'))
     }
 
     const updateItem = async () => {
@@ -84,7 +82,7 @@ const EditForm = () => {
                                     type='text'
                                     onChange={handleChange}
                                     name={'location'}
-                                    placeholder={`${formValues.location}`}
+                                    placeholder={formValues.location}
                                     className='edit-form' />
                             </span>
                         </li>
@@ -96,7 +94,7 @@ const EditForm = () => {
                                     type='text'
                                     onChange={handleChange}
                                     name={'category'}
-                                    placeholder={`${formValues.category}`}
+                                    placeholder={formValues.category}
                                     className='edit-form' />
                             </span>
                         </li>
@@ -107,8 +105,8 @@ const EditForm = () => {
                                     value={formValues.item_name}
                                     type='text'
                                     onChange={handleChange}
-                                    name={'item'}
-                                    placeholder={`${formValues.item_name}`}
+                                    name={'item_name'}
+                                    placeholder={formValues.item_name}
                                     className='edit-form' />
                             </span>
                         </li>
@@ -120,7 +118,7 @@ const EditForm = () => {
                                     type='text'
                                     onChange={handleChange}
                                     name={'description'}
-                                    placeholder={`${formValues.description}`}
+                                    placeholder={formValues.description}
                                     className='edit-form' />
                             </span>
                         </li>
@@ -131,8 +129,8 @@ const EditForm = () => {
                                     value={formValues.unit_measure}
                                     type='text'
                                     onChange={handleChange}
-                                    name={'unit-measure'}
-                                    placeholder={`${formValues.unit_measure}`}
+                                    name={'unit_measure'}
+                                    placeholder={formValues.unit_measure}
                                     className='edit-form' />
                             </span>
                         </li>
@@ -143,18 +141,16 @@ const EditForm = () => {
                                     value={formValues.case_size}
                                     type='text'
                                     onChange={handleChange}
-                                    name={'case-size'}
-                                    placeholder={`${formValues.case_size}`}
+                                    name={'case_size'}
+                                    placeholder={formValues.case_size}
                                     className='edit-form' />
                             </span>
                         </li>
-                        <div onClick={() => handleDelete(formValues._id)}>
-                            <button id='deleteButton' type='submit'>Delete</button>
-                        </div>
-                        <div onClick={() => handleSave(formValues)}>
-                            <button id='saveButton' type='submit'>Save</button>
-                        </div>
+                        <button>Save</button>
                     </form>
+                </div>
+                <div onClick={() => handleDelete(formValues._id)}>
+                    <button id='deleteButton' type='submit'>Delete</button>
                 </div>
             </div>
         </div >
