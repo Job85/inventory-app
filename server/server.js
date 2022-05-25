@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3001
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static(`${__dirname}/client/build`))
 app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'))
 
@@ -20,5 +21,7 @@ app.get('/', (req, res) => {
     res.send({ msg: 'Server Running ' })
 })
 
-
+app.get('/*', (req, res) => {
+    res.sendFile(`${__dirname}/client/build/index.html`)
+})
 app.listen(PORT, () => console.log(`Server running on ${PORT}`))
