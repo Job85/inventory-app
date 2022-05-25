@@ -25,6 +25,9 @@ const EditForm = () => {
             )
             if (!isCancelled) {
                 setFormValues(res.data)
+                console.log(setFormValues)
+                console.log(res.data)
+                console.log(formValues)
             }
         }
         getItem()
@@ -38,7 +41,6 @@ const EditForm = () => {
     }
 
     const handleDelete = async (_id) => {
-        console.log('button clicked')
         await axios.delete(`http://localhost:3001/api/item/delete/${id}`).then(
             () => navigate('/items'))
     }
@@ -54,7 +56,6 @@ const EditForm = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formValues)
         updateItem();
         setFormValues({
             location: '',
@@ -65,13 +66,12 @@ const EditForm = () => {
             case_size: ''
         })
         axios.put(`http://localhost:3001/api/item/update/${id}`, formValues)
-        console.log(updateItem)
         // navigate('/items');
     }
 
     return (
         <div className='items'>
-            <h1>Edit { }</h1>
+            <h1>Edit</h1>
             <div className='editContainer'>
                 <div className='edit-card'>
                     <form onSubmit={handleSubmit}>
