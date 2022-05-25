@@ -8,7 +8,8 @@ const Items = (props) => {
 
     useEffect(() => {
         const getItems = async () => {
-            const items = await axios.get(`http://localhost:3001/api/item`)
+            let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item` : `https://restaurant-inventory-app.herokuapp.com/api/item`
+            const items = await axios.get(url)
             setItems(items.data)
             console.log(items.data)
         }
