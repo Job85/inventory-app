@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Items from './pages/Items';
@@ -10,6 +10,8 @@ import './App.css';
 
 let BASE_URL = 'http://localhost:3001'
 function App() {
+
+  let navigate = useNavigate()
 
   // hook to populate new items in ItemForm.jsx
   let [newItem, setNewItem] = useState({
@@ -28,8 +30,8 @@ function App() {
   // event handler passed as prop to submit new items in ItemForm.jsx
   const handleSubmit = (e) => {
     e.preventDefault();
-    let postItem = axios.post(`${BASE_URL}/api/item/create`, newItem)
-    return postItem
+    axios.post(`${BASE_URL}/api/item/create`, newItem).then(
+      () => navigate('/items'))
   }
 
   const handleUpdate = (id) => {
