@@ -8,7 +8,7 @@ import EditForm from './pages/EditItem';
 import axios from 'axios';
 import './App.css';
 
-let BASE_URL = 'http://localhost:3001'
+let BASE_URL = process.env.NODE_ENV === 'local' ? 'http://localhost:3001' : `https://restaurant-inventory-app.herokuapp.com`
 function App() {
 
   let navigate = useNavigate()
