@@ -5,8 +5,8 @@ let dbUrl = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'm
 
 mongoose
     .connect(dbUrl)
-    .then(() => {
-        console.log('Successfully connected to MongoDB.')
+    .then((x) => {
+        console.log(`Successfully connected to MongoDB! Database name: '${x.connections[0].name}'`)
     })
     .catch((e) => {
         console.error('Connection error', e.message)
