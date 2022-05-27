@@ -20,7 +20,7 @@ const EditForm = () => {
     useEffect(() => {
         let isCancelled = false
         const getItem = async () => {
-            let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/${id}`
+            let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/${id}` : `https://server-inventory-app.herokuapp.com/api/item/${id}`
             const res = await axios.get(url)
             if (!isCancelled) {
                 setFormValues(res.data)
@@ -40,13 +40,13 @@ const EditForm = () => {
     }
 
     const handleDelete = async (_id) => {
-        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/delete/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/delete/${id}`
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/delete/${id}` : `https://server-inventory-app.herokuapp.com/api/item/delete/${id}`
         await axios.delete(url).then(
             () => navigate('/items'))
     }
 
     const updateItem = async () => {
-        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/update${id}`
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://server-inventory-app.herokuapp.com/api/item/update/${id}`
         await axios.put({
             url,
             method: 'put',
@@ -65,7 +65,7 @@ const EditForm = () => {
             unit_measure: '',
             case_size: ''
         })
-        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://restaurant-inventory-app.herokuapp.com/api/item/update${id}`
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://server-inventory-app.herokuapp.com/api/item/update/${id}`
         axios.put(url, formValues)
         // navigate('/items');
     }

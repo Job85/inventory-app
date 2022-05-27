@@ -8,8 +8,8 @@ const Items = (props) => {
 
     useEffect(() => {
         const getItems = async () => {
-            // let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item` : `https://restaurant-inventory-app.herokuapp.com/api/item`
-            const items = await axios.get('/api/item')
+            let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item` : `https://server-inventory-app.herokuapp.com/api/item`
+            const items = await axios.get(url)
             setItems(items.data)
             console.log(items.data)
         }
@@ -29,7 +29,7 @@ const Items = (props) => {
                         <span className='item-card-span'>Description:{item.description}</span>
                         <span className='count-span'>Unit of Measure:{item.unit_measure}</span>
                         <span className='count-span'>Case Size:{item.case_size}</span>
-                        <Link to={`/items/${item._id}`}>
+                        <Link to={`/item/${item._id}`}>
                             <button >
                                 Update
                             </button>
