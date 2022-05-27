@@ -50,9 +50,9 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/items' element={<Items handleUpdate={handleUpdate} />} /><Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
+          <Route path='/item' element={<Items handleUpdate={handleUpdate} />} />
           <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
-          <Route path='/items/:id' element={<EditForm />} />
+          <Route path='/item/:id' element={<EditForm />} />
         </Routes>
       </main>
     </div>
