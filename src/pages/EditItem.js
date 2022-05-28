@@ -24,7 +24,6 @@ const EditForm = () => {
             const res = await axios.get(url)
             if (!isCancelled) {
                 setFormValues(res.data)
-                console.log(setFormValues)
                 console.log(res.data)
                 console.log(formValues)
             }
