@@ -7,32 +7,37 @@ const EditForm = () => {
     let navigate = useNavigate()
     let { id } = useParams()
 
-    const [formValues, setFormValues] = useState({
+    let [formValues, setFormValues] = useState({
         location: '',
         category: '',
         item_name: '',
         description: '',
         unit_measure: '',
         case_size: ''
+
     })
+
+    const getItem = async () => {
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/${id}` : `https://server-inventory-app.herokuapp.com/api/item/${id}`;
+        const item = await axios.get(url)
+        setFormValues(item.data[0])
+        console.log(item.data)
+    }
+
+    useEffect(() => {
+        getItem();
+    }, [])
+
+    useEffect(() => {
+        if (formValues) {
+            setFormValues(item)
+        }
+    }, [formValues])
 
 
     useEffect(() => {
-        let isCancelled = false
-        const getItem = async () => {
-            let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/${id}` : `https://server-inventory-app.herokuapp.com/api/item/${id}`
-            const res = await axios.get(url)
-            if (!isCancelled) {
-                setFormValues(res.data)
-                console.log(res.data)
-                console.log(formValues)
-            }
-        }
-        getItem()
-        return () => {
-            isCancelled = true
-        }
-    }, [id])
+        setFormValues(formValues)
+    }, [formValues])
 
     const handleChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -72,17 +77,31 @@ const EditForm = () => {
     return (
         <div className='items'>
             <h1>Edit</h1>
+            <span>
+                <label>Location:{formValues.location}</label>
+                <input
+                    // defaultValue={formValues.location}
+                    defaultValue={formValues.location}
+                    type='text'
+                    onChange={handleChange}
+                    name='location'
+                    placeholder={formValues.location}
+                    className='edit-form'
+                    required
+                />
+            </span>
             <div className='editContainer'>
                 <div className='edit-card'>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} >
                         <li className='item-card'>
                             <span>
                                 <label>Location:</label>
                                 <input
+                                    // defaultValue={formValues.location}
                                     value={formValues.location}
                                     type='text'
                                     onChange={handleChange}
-                                    name={'location'}
+                                    name='location'
                                     placeholder={formValues.location}
                                     className='edit-form'
                                     required
