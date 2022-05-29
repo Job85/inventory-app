@@ -22,19 +22,19 @@ const Items = (props) => {
             <h1>Items List</h1>
             <div className='item-container'>
                 {items.map((item, i) => (
-                    <li className='item-card' key={i}>
-                        <span className='item-card-span'>Location:{item.location}</span>
-                        <span className='item-card-span'> Category:{item.category}</span>
-                        <span className='item-card-span'> Item:{item.item_name}</span>
-                        <span className='item-card-span'>Description:{item.description}</span>
-                        <span className='count-span'>Unit of Measure:{item.unit_measure}</span>
-                        <span className='count-span'>Case Size:{item.case_size}</span>
+                    <div className='item-card card' key={i}>
+                        <span className='item-card-span'><b>Location:</b>{item.location}</span>
+                        <span className='item-card-span'><b>Category:</b>{item.category}</span>
+                        <span className='item-card-span'> <b>Item:</b>{item.item_name}</span>
+                        <span className='item-card-span'><b>Description:</b>{item.description}</span>
+                        <span className='count-span'><b>Unit of Measure:</b>{item.unit_measure}</span>
+                        <span className='count-span'><b>Case Size:</b>{item.case_size}</span>
                         <Link to={`/item/${item._id}`}>
-                            <button >
+                            <button className='up-button'>
                                 Update
                             </button>
                         </Link>
-                    </li>
+                    </div>
                 ))}
             </div>
         </div>

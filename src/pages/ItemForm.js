@@ -16,6 +16,7 @@ const ItemForm = (props) => {
                                 onChange={props.handleChange}
                                 name={'location'}
                                 placeholder={'location'}
+                                required
                                 className='label-form' />
                         </ul>
                         <ul>
@@ -25,6 +26,7 @@ const ItemForm = (props) => {
                                 onChange={props.handleChange}
                                 name={'category'}
                                 placeholder={'category'}
+                                required
                                 className='label-form' />
                         </ul>
                         <ul>
@@ -34,6 +36,7 @@ const ItemForm = (props) => {
                                 onChange={props.handleChange}
                                 name={'item_name'}
                                 placeholder={'item name'}
+                                required
                                 className='label-form' />
                         </ul>
                         <ul>
@@ -43,6 +46,7 @@ const ItemForm = (props) => {
                                 onChange={props.handleChange}
                                 name={'description'}
                                 placeholder={'description'}
+                                required
                                 className='label-form' />
                         </ul>
                         <ul>
@@ -52,6 +56,7 @@ const ItemForm = (props) => {
                                 onChange={props.handleChange}
                                 name={'unit_measure'}
                                 placeholder={'unit measure'}
+                                required
                                 className='label-form' />
                         </ul>
                         <ul>
@@ -61,6 +66,7 @@ const ItemForm = (props) => {
                                 onChange={props.handleChange}
                                 name={'case_size'}
                                 placeholder={'case size'}
+                                required
                                 className='label-form' />
                         </ul>
                     </ul>

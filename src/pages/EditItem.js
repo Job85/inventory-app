@@ -28,16 +28,6 @@ const EditForm = () => {
         getItem();
     }, [])
 
-    useEffect(() => {
-        if (formValues) {
-            setFormValues(item)
-        }
-    }, [formValues])
-
-
-    useEffect(() => {
-        setFormValues(formValues)
-    }, [formValues])
 
     const handleChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -77,19 +67,6 @@ const EditForm = () => {
     return (
         <div className='items'>
             <h1>Edit</h1>
-            <span>
-                <label>Location:{formValues.location}</label>
-                <input
-                    // defaultValue={formValues.location}
-                    defaultValue={formValues.location}
-                    type='text'
-                    onChange={handleChange}
-                    name='location'
-                    placeholder={formValues.location}
-                    className='edit-form'
-                    required
-                />
-            </span>
             <div className='editContainer'>
                 <div className='edit-card'>
                     <form onSubmit={handleSubmit} >
@@ -97,7 +74,6 @@ const EditForm = () => {
                             <span>
                                 <label>Location:</label>
                                 <input
-                                    // defaultValue={formValues.location}
                                     value={formValues.location}
                                     type='text'
                                     onChange={handleChange}
