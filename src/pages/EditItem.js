@@ -61,7 +61,7 @@ const EditForm = () => {
         })
         let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://server-inventory-app.herokuapp.com/api/item/update/${id}`
         axios.put(url, formValues)
-        // navigate('/items');
+        navigate('/items');
     }
 
     return (
