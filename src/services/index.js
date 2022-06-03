@@ -13,7 +13,7 @@ Client.interceptors.request.use(
             config.headers['access-control-allow-origin'] = '*'
         }
         return config;
-    }
+    },
     (error) => Promise.reject(error)
 )
 
