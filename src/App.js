@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Items from './pages/Items';
 import ItemForm from './pages/ItemForm';
 import EditForm from './pages/EditItem';
-import Register from './pages/Register';
 import axios from 'axios';
 import './App.css';
 
@@ -52,7 +51,6 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/register' element={<Register />} />
           <Route path='/items' element={<Items handleUpdate={handleUpdate} />} />
           <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
           <Route path='/item/:id' element={<EditForm />} />

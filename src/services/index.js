@@ -1,5 +1,4 @@
 import axios from "axios";
-import { config } from "dotenv";
 
 export const BASE_URL = process.env.NODE_ENV === 'local' ? 'http://localhost:3001/api' : 'https://server-inventory-app.herokuapp.com/api'
 console.log(BASE_URL, `This is ${BASE_URL}`)
