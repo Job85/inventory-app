@@ -8,10 +8,10 @@ const Landing = () => {
         <div className='home'>
             <section className="title">
                 <h2>
-                    Welcome to your inventory App!
+                    Welcome to the App
                 </h2>
                 <h3>
-                    A Way to Manage Your Inventory
+                    That Will Change the Way You Manage Your Inventory
                 </h3>
             </section>
             <section>
