@@ -1,8 +1,10 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { registerUser } from '../services/Auth'
 
 const Register = () => {
+
+    let navigate = useNavigate()
 
     const [formValues, setFormValues] = useState({
         username: '',
@@ -28,6 +30,7 @@ const Register = () => {
             password: '',
             confirmPassword: ''
         })
+        navigate('/login')
         console.log('registration successful')
     }
 
