@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './pages/Home';
+import Landing from './pages/Landing';
 import Items from './pages/Items';
 import ItemForm from './pages/ItemForm';
 import EditForm from './pages/EditItem';
@@ -51,7 +51,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
           <Route path='/items' element={<Items handleUpdate={handleUpdate} />} />
           <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
