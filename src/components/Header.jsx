@@ -18,7 +18,7 @@ const Header = ({ authenticated, user, handleLogOut }) => {
     const publicOptions = (
         <nav className='navbar'>
             <Link to='/'>Home</Link>
-            <Link to='/register'>Sign Up for App</Link>
+            <Link to='/register'>App Sign Up</Link>
             <Link to='/login'>Log In</Link>
         </nav>
     )
