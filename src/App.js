@@ -81,9 +81,22 @@ function App() {
             setUser={setUser}
             toggleAuthenticated={toggleAuthenticated}
           />} />
-          <Route path='/items' element={<Items handleUpdate={handleUpdate} />} />
-          <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
-          <Route path='/item/:id' element={<EditForm />} />
+          <Route path='/items' element={<Items
+            handleUpdate={handleUpdate}
+            user={user}
+            authenticated={authenticated}
+          />} />
+          <Route path='/new' element={<ItemForm
+            newItem={newItem}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            user={user}
+            authenticated={authenticated}
+          />} />
+          <Route path='/item/:id' element={<EditForm
+            user={user}
+            authenticated={authenticated}
+          />} />
         </Routes>
       </main>
     </div>
