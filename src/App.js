@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Landing from './pages/Landing';
@@ -6,14 +6,38 @@ import Items from './pages/Items';
 import ItemForm from './pages/ItemForm';
 import EditForm from './pages/EditItem';
 import Register from './pages/Register';
+import Login from './pages/Login';
 import axios from 'axios';
 import './App.css';
+import { checkSession } from './services/Auth';
 
 let BASE_URL = process.env.NODE_ENV === 'local' ? 'http://localhost:3001' : `https://server-inventory-app.herokuapp.com/`
 
 function App() {
 
   let navigate = useNavigate()
+
+  const [authenticated, toggleAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+
+  const checkToken = async () => {
+    const user = await checkSession();
+    setUser(user);
+    toggleAuthenticated(true)
+  }
+
+  const handleLogOut = () => {
+    setUser(null)
+    toggleAuthenticated(false)
+    localStorage.clear()
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   // hook to populate new items in ItemForm.jsx
   let [newItem, setNewItem] = useState({
@@ -53,6 +77,10 @@ function App() {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login
+            setUser={setUser}
+            toggleAuthenticated={toggleAuthenticated}
+          />} />
           <Route path='/items' element={<Items handleUpdate={handleUpdate} />} />
           <Route path='/new' element={<ItemForm newItem={newItem} handleChange={handleChange} handleSubmit={handleSubmit} />} />
           <Route path='/item/:id' element={<EditForm />} />

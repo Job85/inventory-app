@@ -1,0 +1,78 @@
+import React, { useState } from "react";
+import { signInUser } from "../services/Auth";
+
+const Login = (props) => {
+
+    const [formValues, setFormValues] = useState({
+        username: '',
+        email: '',
+        password: ''
+    })
+
+    const handleInput = (e) => {
+        setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const payload = await signInUser(formValues)
+        setFormValues({ username: '', email: '', password: '' })
+        localStorage.setItem('user', payload._id)
+        props.setUser(payload)
+        props.toggleAuthenticated(true)
+        console.log('log in successful')
+    }
+
+    return (
+        <div>
+            <div>
+                <form className="col" onSubmit={handleSubmit}>
+                    <div className="input-wrapper">
+                        <label htmlFor='username'>Username</label>
+                        <input
+                            onChange={handleInput}
+                            name='username'
+                            type="text"
+                            placeholder='Username'
+                            value={formValues.username}
+                            required
+                        />
+                    </div>
+                    <div className='input-wrapper'>
+                        <label htmlFor='username'>Email</label>
+                        <input
+                            onChange={handleInput}
+                            name='email'
+                            type="text"
+                            placeholder='example@email.com'
+                            value={formValues.email}
+                            required
+                        />
+                    </div>
+                    <div className='input-wrapper'>
+                        <label htmlFor='username'>Password</label>
+                        <input
+                            onChange={handleInput}
+                            name='password'
+                            type="password"
+                            placeholder='Username'
+                            value={formValues.password}
+                            required
+                        />
+                    </div>
+                    <button
+                        disabled={
+                            !formValues.username ||
+                            !formValues.email ||
+                            !formValues.password
+                        }
+                    >
+                        Log In
+                    </button>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+export default Login
