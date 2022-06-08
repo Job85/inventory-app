@@ -28,6 +28,7 @@ const Register = () => {
             password: '',
             confirmPassword: ''
         })
+        console.log('registration successful')
     }
 
     return (
