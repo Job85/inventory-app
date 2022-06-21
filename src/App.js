@@ -46,7 +46,10 @@ function App() {
     item_name: '',
     description: '',
     unit_measure: '',
-    case_size: ''
+    case_size: '',
+    count: '',
+    vendor_name: '',
+    vendor_code: ''
   })
 
   const handleChange = (e) => {
