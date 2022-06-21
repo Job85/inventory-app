@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { signInUser } from "../services/Auth";
 
 const Login = (props) => {
+
+    let navigate = useNavigate()
 
     const [formValues, setFormValues] = useState({
         username: '',
@@ -21,6 +24,7 @@ const Login = (props) => {
         props.setUser(payload)
         props.toggleAuthenticated(true)
         console.log('log in successful')
+        navigate('/home')
     }
 
     return (

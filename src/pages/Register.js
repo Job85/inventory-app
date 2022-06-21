@@ -50,7 +50,7 @@ const Register = () => {
                         />
                     </div>
                     <div className='input-wrapper'>
-                        <label htmlFor='username'>Email</label>
+                        <label htmlFor='email'>Email</label>
                         <input
                             onChange={handleChange}
                             name='email'
@@ -61,12 +61,12 @@ const Register = () => {
                         />
                     </div>
                     <div className='input-wrapper'>
-                        <label htmlFor='username'>Password</label>
+                        <label htmlFor='password'>Password</label>
                         <input
                             onChange={handleChange}
                             name='password'
                             type="password"
-                            placeholder='Username'
+                            placeholder='Password'
                             value={formValues.password}
                             required
                         />
