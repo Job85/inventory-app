@@ -71,7 +71,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header />
+        <Header
+          authenticated={authenticated}
+          user={user}
+          handleLogOut={handleLogOut}
+        />
       </header>
       <main>
         <Routes>
