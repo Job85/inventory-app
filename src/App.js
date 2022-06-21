@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import Items from './pages/Items';
 import ItemForm from './pages/ItemForm';
 import EditForm from './pages/EditItem';
+import VendorForm from './components/VendorForm';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import axios from 'axios';
@@ -101,6 +102,10 @@ function App() {
             authenticated={authenticated}
           />} />
           <Route path='/item/:id' element={<EditForm
+            user={user}
+            authenticated={authenticated}
+          />} />
+          <Route path='/vendor/new' element={<VendorForm
             user={user}
             authenticated={authenticated}
           />} />
