@@ -5,7 +5,7 @@ import Landing from './pages/Landing';
 import Items from './pages/Items';
 import ItemForm from './pages/ItemForm';
 import EditForm from './pages/EditItem';
-import VendorForm from './components/VendorForm';
+import VendorForm from './pages/CreateVendor';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import axios from 'axios';
@@ -53,10 +53,27 @@ function App() {
     vendor_code: ''
   })
 
+  // hook to populate new vendor in VendorForm.jsx
+  let [newVendor, setNewVendor] = useState({
+    vendor_name: '',
+    vendor_phone: '',
+    vendor_address:
+    {
+      street: '',
+      street2: '',
+      city: '',
+      state: '',
+      zip_code: ''
+    }
+  })
+
   const handleChange = (e) => {
     setNewItem({ ...newItem, [e.target.name]: e.target.value })
   }
 
+  const handleVenChange = (e) => {
+    setNewVendor({ ...newVendor, [e.target.name]: e.target.value })
+  }
   // event handler passed as prop to submit new items in ItemForm.jsx
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,6 +83,10 @@ function App() {
         () => navigate('/items'))
   }
 
+  const handleSubmitVen = (e) => {
+    e.preventDefault();
+    axios.post(`${BASE_URL}api/vendor/create`, newVendor)
+  }
   const handleUpdate = (id) => {
     // let editItem = axios.get(`/api/item/${id}`)
     let editItem = axios.get(`${BASE_URL}api/item/${id}`)
@@ -106,6 +127,9 @@ function App() {
             authenticated={authenticated}
           />} />
           <Route path='/vendor/new' element={<VendorForm
+            newVendor={newVendor}
+            handleChange={handleVenChange}
+            handleSubmit={handleSubmitVen}
             user={user}
             authenticated={authenticated}
           />} />

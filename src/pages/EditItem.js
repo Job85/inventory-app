@@ -13,7 +13,10 @@ const EditForm = () => {
         item_name: '',
         description: '',
         unit_measure: '',
-        case_size: ''
+        case_size: '',
+        count: '',
+        vendor_name: '',
+        vendor_code: ''
 
     })
 
@@ -57,7 +60,10 @@ const EditForm = () => {
             item_name: '',
             description: '',
             unit_measure: '',
-            case_size: ''
+            case_size: '',
+            count: '',
+            vendor_name: '',
+            vendor_code: ''
         })
         let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://server-inventory-app.herokuapp.com/api/item/update/${id}`
         axios.put(url, formValues)
@@ -149,6 +155,48 @@ const EditForm = () => {
                                     onChange={handleChange}
                                     name={'case_size'}
                                     placeholder={formValues.case_size}
+                                    className='edit-form'
+                                    required
+                                />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Count:</label>
+                                <input
+                                    value={formValues.count}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'count'}
+                                    placeholder={formValues.count}
+                                    className='edit-form'
+                                    required
+                                />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Vendor Name:</label>
+                                <input
+                                    value={formValues.vendor_name}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'vendor_name'}
+                                    placeholder={formValues.vendor_name}
+                                    className='edit-form'
+                                    required
+                                />
+                            </span>
+                        </li>
+                        <li className='item-card'>
+                            <span>
+                                <label>Vendor Code:</label>
+                                <input
+                                    value={formValues.vendor_code}
+                                    type='text'
+                                    onChange={handleChange}
+                                    name={'vendor_code'}
+                                    placeholder={formValues.vendor_code}
                                     className='edit-form'
                                     required
                                 />

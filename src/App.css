@@ -35,6 +35,12 @@
   align-items: center;
 }
 
+.create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card {
   width: 30%;
   padding: 2rem;

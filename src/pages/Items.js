@@ -28,7 +28,9 @@ const Items = (props) => {
                         <span className='item-card-span'> <b>Item:</b>{item.item_name}</span>
                         <span className='item-card-span'><b>Description:</b>{item.description}</span>
                         <span className='count-span'><b>Unit of Measure:</b>{item.unit_measure}</span>
-                        <span className='count-span'><b>Case Size:</b>{item.case_size}</span>
+                        <span className='case-span'><b>Case Size:</b>{item.case_size}</span>
+                        <span className='vendor_name-span'><b>Vendor Name:</b>{item.vendor_name}</span>
+                        <span className='vendor_code-span'><b>Vendor Code:</b>{item.vendor_code}</span>
                         <Link to={`/item/${item._id}`}>
                             <button className='up-button'>
                                 Update
