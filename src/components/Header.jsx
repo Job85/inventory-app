@@ -8,7 +8,7 @@ const Header = ({ authenticated, user, handleLogOut }) => {
             <nav className='navbar'>
                 <Link to="/">Home</Link>
                 <Link to='/new'>Create Item</Link>
-                <Link to='/items'>Items List</Link>
+                <Link to='/items/:user_id'>Items List</Link>
                 <Link onClick={handleLogOut} to='/'>
                     Sign Out
                 </Link>

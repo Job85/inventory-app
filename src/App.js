@@ -110,7 +110,7 @@ function App() {
             setUser={setUser}
             toggleAuthenticated={toggleAuthenticated}
           />} />
-          <Route path='/items' element={<Items
+          <Route path='/items/:user_id' element={<Items
             handleUpdate={handleUpdate}
             user={user}
             authenticated={authenticated}
