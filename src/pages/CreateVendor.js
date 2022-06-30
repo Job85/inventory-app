@@ -1,4 +1,11 @@
-const VendorForm = (props) => {
+import React from "react";
+import { Navigate } from "react-router-dom";
+
+const VendorForm = (props, { authenticated }) => {
+
+    if (!authenticated) {
+        return <Navigate to='/' replace />;
+    }
 
     return (
         <div className="create">

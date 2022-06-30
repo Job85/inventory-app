@@ -6,7 +6,6 @@ import axios from 'axios'
 const EditForm = () => {
     let navigate = useNavigate()
     let { id } = useParams()
-    let { user_id } = useParams
 
     let [formValues, setFormValues] = useState({
         location: '',
@@ -68,7 +67,7 @@ const EditForm = () => {
         })
         let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://server-inventory-app.herokuapp.com/api/item/update/${id}`
         axios.put(url, formValues)
-        navigate(`/items/${user_id}`);
+        navigate('/items');
     }
 
     return (

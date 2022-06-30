@@ -6,7 +6,8 @@ const Header = ({ authenticated, user, handleLogOut }) => {
     if (user) {
         authOptions = (
             <nav className='navbar'>
-                <Link to="/">Home</Link>
+                {/* <Link to="/">Home</Link> */}
+                <Link to="/profile/:user_id">Home</Link>
                 <Link to='/new'>Create Item</Link>
                 <Link to='/items'>Items List</Link>
                 <Link onClick={handleLogOut} to='/'>

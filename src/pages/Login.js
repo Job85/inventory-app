@@ -20,11 +20,11 @@ const Login = (props) => {
         e.preventDefault()
         const payload = await signInUser(formValues)
         setFormValues({ username: '', email: '', password: '' })
-        localStorage.setItem('user', payload._id)
+        localStorage.setItem('user', payload.id)
         props.setUser(payload)
         props.toggleAuthenticated(true)
-        console.log('log in successful')
-        navigate('/home')
+        console.log(payload.id)
+        navigate('/home/:user_id')
     }
 
     return (
