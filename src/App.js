@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Landing from './pages/Landing';
-import Profile from './pages/Profile';
+// import Profile from './pages/Profile';
 import Items from './pages/Items';
 import ItemForm from './pages/ItemForm';
 import EditForm from './pages/EditItem';
@@ -21,7 +21,7 @@ function App() {
 
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-
+  console.log(process.env.NODE_ENV, 'Node Environment')
   const checkToken = async () => {
     const user = await checkSession();
     setUser(user);
@@ -111,9 +111,9 @@ function App() {
             setUser={setUser}
             toggleAuthenticated={toggleAuthenticated}
           />} />
-          <Route
+          {/* <Route
             path='/home/:user_id'
-            element={<Profile user={user} authenticated={authenticated} />} />
+            element={<Profile user={user} authenticated={authenticated} />} /> */}
           <Route path='/items/' element={<Items
             handleUpdate={handleUpdate}
             user={user}

@@ -24,7 +24,7 @@ const Login = (props) => {
         props.setUser(payload)
         props.toggleAuthenticated(true)
         console.log(payload.id)
-        navigate('/home/:user_id')
+        navigate('/')
     }
 
     return (
