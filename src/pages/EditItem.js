@@ -37,13 +37,13 @@ const EditForm = () => {
     }
 
     const handleDelete = async (_id) => {
-        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/delete/${id}` : `https://server-inventory-app.herokuapp.com/api/item/delete/${id}`
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/delete/${id}` : `https://inventory-api-wh8v.onrender.com/api/item/delete/${id}`
         await axios.delete(url).then(
             () => navigate('/items'))
     }
 
     const updateItem = async () => {
-        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://server-inventory-app.herokuapp.com/api/item/update/${id}`
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://inventory-api-wh8v.onrender.com/api/item/update/${id}`
         await axios.put({
             url,
             method: 'put',
@@ -65,7 +65,7 @@ const EditForm = () => {
             vendor_name: '',
             vendor_code: ''
         })
-        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://server-inventory-app.herokuapp.com/api/item/update/${id}`
+        let url = process.env.NODE_ENV === 'local' ? `http://localhost:3001/api/item/update/${id}` : `https://inventory-api-wh8v.onrender.com/api/item/update/${id}`
         axios.put(url, formValues)
         navigate('/items');
     }

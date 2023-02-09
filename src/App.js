@@ -13,8 +13,8 @@ import axios from 'axios';
 import './App.css';
 import { checkSession } from './services/Auth';
 
-let BASE_URL = process.env.NODE_ENV === 'local' ? 'http://localhost:3001' : `https://server-inventory-app.herokuapp.com/`
-
+// let BASE_URL = process.env.NODE_ENV === 'local' ? 'http://localhost:3001' : `https://server-inventory-app.herokuapp.com/`
+let BASE_URL = 'http://localhost:3001'
 function App() {
 
   let navigate = useNavigate()
