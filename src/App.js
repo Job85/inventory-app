@@ -37,7 +37,8 @@ function App() {
   }
 
   useEffect(() => {
-    if (location.pathname !== '/') {
+    const excludedPaths = ['/', '/register', '/login']
+    if (!excludedPaths.includes(location.pathname)) {
       checkToken();
     }
   }, [location.pathname]);
