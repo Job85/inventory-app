@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Landing from './pages/Landing';
 // import Profile from './pages/Profile';
@@ -18,10 +18,12 @@ let BASE_URL = 'http://localhost:3001'
 function App() {
 
   let navigate = useNavigate()
+  let location = useLocation();
 
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   console.log(process.env.NODE_ENV, 'Node Environment')
+
   const checkToken = async () => {
     const user = await checkSession();
     setUser(user);
@@ -35,11 +37,10 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      checkToken()
+    if (location.pathname !== '/') {
+      checkToken();
     }
-  }, [])
+  }, [location.pathname]);
 
   // hook to populate new items in ItemForm.jsx
   let [newItem, setNewItem] = useState({
