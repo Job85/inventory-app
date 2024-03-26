@@ -17,14 +17,31 @@ const Login = (props) => {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        const payload = await signInUser(formValues)
-        setFormValues({ username: '', email: '', password: '' })
-        localStorage.setItem('user', payload.id)
-        props.setUser(payload)
-        props.toggleAuthenticated(true)
-        console.log(payload.id)
-        navigate('/')
+        e.preventDefault();
+        console.log('Email:', formValues.email);
+        console.log('Password:', formValues.password);
+        try {
+            const payload = await signInUser(formValues);
+            setFormValues({ username: '', email: '', password: '' });
+            localStorage.setItem('user', payload.id);
+            props.setUser(payload);
+            props.toggleAuthenticated(true);
+            console.log(payload.id);
+            navigate('/');
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                console.log('Unauthorized: Invalid credentials');
+            } else {
+                console.error('Login failed:', error.message);
+            }
+        }
+        // const payload = await signInUser(formValues)
+        // setFormValues({ username: '', email: '', password: '' })
+        // localStorage.setItem('user', payload.id)
+        // props.setUser(payload)
+        // props.toggleAuthenticated(true)
+        // console.log(payload.id)
+        // navigate('/')
     }
 
     return (

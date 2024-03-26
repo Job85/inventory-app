@@ -19,20 +19,31 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await registerUser({
-            username: formValues.username,
-            email: formValues.email,
-            password: formValues.password
-        })
-        setFormValues({
-            username: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
-        })
-        navigate('/login')
-        console.log('registration successful')
-    }
+
+        if (formValues.password !== formValues.confirmPassword) {
+            console.error("Passwords do not match");
+            return;
+        }
+
+        try {
+            await registerUser({
+                username: formValues.username,
+                email: formValues.email,
+                password: formValues.password
+            })
+            console.log('password:', formValues.password);
+            setFormValues({
+                username: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            });
+            navigate('/login')
+            console.log('registration successful');
+        } catch (error) {
+            console.error("Registration failed:", error.message);
+        }
+    };
 
     return (
         <div className='register col'>
