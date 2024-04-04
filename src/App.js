@@ -150,7 +150,7 @@ function App() {
             user={user}
             authenticated={authenticated}
           />} />
-          <Route path='/new' element={<ItemForm
+          <Route path='/:user_id/new_item' element={<ItemForm
             newItem={newItem}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
