@@ -11,7 +11,6 @@ Client.interceptors.request.use(
         console.log('Token in Client:', token)
         if (token) {
             config.headers['Authorization'] = `Bearer ${token}`
-            console.log('Request headers:', config.headers);
         }
         return config;
     },
