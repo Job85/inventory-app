@@ -18,15 +18,15 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Email:', formValues.email);
-        console.log('Password:', formValues.password);
         try {
-            const payload = await signInUser(formValues);
+            const { user, token } = await signInUser(formValues);
             setFormValues({ username: '', email: '', password: '' });
-            localStorage.setItem('user', payload.id);
-            props.setUser(payload);
+            localStorage.setItem('token', token);
+            props.setToken(token);
+
+            localStorage.setItem('user', user.id);
+            props.setUser(user);
             props.toggleAuthenticated(true);
-            console.log(payload.id);
             navigate('/');
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -35,13 +35,6 @@ const Login = (props) => {
                 console.error('Login failed:', error.message);
             }
         }
-        // const payload = await signInUser(formValues)
-        // setFormValues({ username: '', email: '', password: '' })
-        // localStorage.setItem('user', payload.id)
-        // props.setUser(payload)
-        // props.toggleAuthenticated(true)
-        // console.log(payload.id)
-        // navigate('/')
     }
 
     return (
@@ -60,7 +53,7 @@ const Login = (props) => {
                         />
                     </div>
                     <div className='input-wrapper'>
-                        <label htmlFor='username'>Email</label>
+                        <label htmlFor='eamil'>Email</label>
                         <input
                             onChange={handleInput}
                             name='email'
@@ -71,12 +64,12 @@ const Login = (props) => {
                         />
                     </div>
                     <div className='input-wrapper'>
-                        <label htmlFor='username'>Password</label>
+                        <label htmlFor='password'>Password</label>
                         <input
                             onChange={handleInput}
                             name='password'
                             type="password"
-                            placeholder='Username'
+                            placeholder='Password'
                             value={formValues.password}
                             required
                         />
