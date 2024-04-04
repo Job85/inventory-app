@@ -8,13 +8,17 @@ const Client = axios.create({ baseURL: BASE_URL })
 Client.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token')
+        console.log('Token in Client:', token)
         if (token) {
-            config.headers['authorization'] = `Bearer ${token}`
-            config.headers['access-control-allow-origin'] = '*'
+            config.headers['Authorization'] = `Bearer ${token}`
+            console.log('Request headers:', config.headers);
         }
         return config;
     },
-    (error) => Promise.reject(error)
+    (error) => {
+        console.error('Error in request interceptor:', error);
+        return Promise.reject(error);
+    }
 )
 
 export default Client
